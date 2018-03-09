@@ -1,3 +1,10 @@
+version: '2'
+volumes:
+  alfresco-data:
+    driver: ${volumedriver}
+  postgres-data:
+    driver: ${volumedriver}
+
 alfresco:
   environment:
     CIFS_ENABLED: 'false'
@@ -10,7 +17,7 @@ alfresco:
   - postgres:db
   stdin_open: true
   ports:
-  - 8080:8080/tcp
+  - 2080:2080/tcp
   volumes_from:
     - alfresco-data
 alfresco-data:

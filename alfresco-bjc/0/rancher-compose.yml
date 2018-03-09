@@ -23,11 +23,20 @@
       type: "string"
       required: true
       default: "alfresco"
+    - variable: "volumedriver"
+      description: "Choose the Volume Driver being used.(Option: local or rancher-nfs)"
+      label: "Volume Driver:"
+      required: true
+      default: local
+      type: "enum"
+      options:
+        - local
+        - rancher-nfs
 
 alfresco:
   scale: 1
   health_check:
-    port: 8080
+    port: 2080
     interval: 5000
     unhealthy_threshold: 3
     strategy: recreate
