@@ -43,7 +43,6 @@ services:
     stdin_open: true
     volumes_from:
     - postgres-stroage
-
   postgres-storage:
     labels:
       io.rancher.container.start_once: 'true'
