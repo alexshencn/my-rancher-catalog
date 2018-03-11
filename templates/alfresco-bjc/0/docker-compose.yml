@@ -10,7 +10,7 @@ services:
       CIFS_ENABLED: 'false'
       FTP_ENABLED: 'false'
     labels:
-      io.rancher.sidekicks: alfresco-data
+      io.rancher.sidekicks: alfresco-storage
     tty: true
     image: webcenter/rancher-alfresco:v5.1-201605-1
     links:
@@ -19,13 +19,13 @@ services:
     ports:
     - 2080:2080/tcp
     volumes_from:
-      - alfresco-data
-  alfresco-data:
+      - alfresco-storage
+  alfresco-storage:
     labels:
       io.rancher.container.start_once: 'true'
     image: alpine
     volumes:
-    - /opt/alfresco/alf_data
+      - alfresco-data:/opt/alfresco/alf_data
 #    network_mode: none
     command: /bin/true
   postgres:
@@ -35,17 +35,17 @@ services:
       POSTGRES_PASSWORD: ${database_password}
       POSTGRES_USER: ${database_user}
     labels:
-      io.rancher.sidekicks: postgres-data
+      io.rancher.sidekicks: postgres-storage
     tty: true
     image: postgres:9.4
     stdin_open: true
     volumes_from:
-      - postgres-data
-  postgres-data:
+      - postgres-stroage
+  postgres-storage:
     labels:
       io.rancher.container.start_once: 'true'
     image: alpine
     volumes:
-    - /var/lib/postgresql/data/pgdata
+      - postgres-data:/var/lib/postgresql/data/pgdata
 #    network_mode: none
     command: /bin/true
