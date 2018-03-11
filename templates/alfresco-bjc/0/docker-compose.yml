@@ -4,6 +4,7 @@ volumes:
     driver: ${volumedriver}
   postgres-data:
     driver: ${volumedriver}
+
 services:
   alfresco:
     environment:
@@ -28,6 +29,7 @@ services:
       - alfresco-data:/opt/alfresco/alf_data
 #    network_mode: none
     command: /bin/true
+
   postgres:
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -41,6 +43,7 @@ services:
     stdin_open: true
     volumes_from:
       - postgres-stroage
+
   postgres-storage:
     labels:
       io.rancher.container.start_once: 'true'

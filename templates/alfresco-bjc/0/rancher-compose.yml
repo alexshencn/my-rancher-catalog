@@ -53,8 +53,8 @@ postgres:
     response_timeout: 5000
     healthy_threshold: 3
 
-postgres-data:
+postgres-storage:
   scale: 1
 
-alfresco-data:
+alfresco-storage:
   scale: 1
