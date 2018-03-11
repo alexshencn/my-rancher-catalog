@@ -26,7 +26,7 @@ services:
     image: alpine
     volumes:
     - /opt/alfresco/alf_data
-    net: none
+#    network_mode: none
     command: /bin/true
   postgres:
     environment:
@@ -47,5 +47,5 @@ services:
     image: alpine
     volumes:
     - /var/lib/postgresql/data/pgdata
-    net: none
+#    network_mode: none
     command: /bin/true
