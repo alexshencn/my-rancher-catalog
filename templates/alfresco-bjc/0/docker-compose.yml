@@ -2,8 +2,8 @@ version: '2'
 volumes:
   alfresco-data:
     driver: ${volumedriver}
-  postgres-data:
-    driver: ${volumedriver}
+#  postgres-data:
+#    driver: ${volumedriver}
 
 services:
   alfresco:
@@ -48,6 +48,6 @@ services:
       io.rancher.container.start_once: 'true'
     image: alpine
     volumes:
-    - postgres-data:/var/lib/postgresql/data/pgdata
-#    network_mode: none
+      driver: ${volumedriver}
+      - /var/lib/postgresql/data/pgdata
     command: /bin/true
